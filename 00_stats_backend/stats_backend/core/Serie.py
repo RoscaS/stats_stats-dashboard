@@ -57,36 +57,82 @@ class _Serie:
             flat_lst += [int(i[1]) for j in range(i[0])]
         return flat_lst
 
+    def _count(self):
+        return Counter(self.serie)
+
     def _serialize_data(self):
         """Serialisation des données"""
         return {
-            'global': {
-                'effectifs': self.effectifs,
-                'min': min(self.serie),
-                'max': max(self.serie),
-                'etendue': self.etendue,
-                'mode': _r(self.mode()),
-            },
-            'centre': {
-                'centre': _r(self.centre),
-                'moyenne': _r(self.moyenne),
-                'mediane': _r(self.mediane()),
-            },
-            'dispersion': {
-                'ecart_absolu_moyen': _r(self.EAM()),
-                'ecart_semi_inter_quartile:': _r(self.ESI()),
-                'variance': _r(self.variance()),
-                'ecart_type': _r(self.ecart_type()),
-                'coefficient_de_variation': _r(self.coefficient_variation()),
-            },
-            'forme': {
-                'coefficient_assymetrie': _r(self.coeff_asym()),
-                'coefficient_applatissement': _r(self.coeff_appl())
-            },
-            'quantiles': {
-                'quartiles': list(self.quartiles().values()),
-            },
+            'study': {
+                'general': {
+                    'effectifs': self.effectifs,
+                    'min': min(self.serie),
+                    'max': max(self.serie),
+                    'etendue': self.etendue,
+                    'mode': _r(self.mode()),
+                },
+                'centre': {
+                    'centre': _r(self.centre),
+                    'moyenne': _r(self.moyenne),
+                    'mediane': _r(self.mediane()),
+                },
+                'dispersion': {
+                    'ecart_absolu_moyen': _r(self.EAM()),
+                    'ecart_semi_inter_quartile': _r(self.ESI()),
+                    'variance': _r(self.variance()),
+                    'ecart_type': _r(self.ecart_type()),
+                    'coefficient_de_variation': {
+                        'data': _r(self.coefficient_variation()),
+                        'info': self._get_coeff_info('variation', seuil=15)
+                    }
+                },
+                'forme': {
+                    'coefficient_asymetrie': {
+                        'data': _r(self.coeff_asym()),
+                        'info': self._get_coeff_info('asymetrie')
+                    },
+                    'coefficient_applatissement': {
+                        'data': _r(self.coeff_appl()),
+                        'info': self._get_coeff_info('applatissement')
+                    }
+                },
+                'quantiles': {
+                    'quartiles': self.quartiles(),
+                },
+            }
         }
+
+    def _coeffs_info(self):
+        return {
+            'variation': {
+                'func': self.coefficient_variation,
+                '>': '(coeff > seuil (15)) Série statistique dispersée.',
+                '<': '(coeff < seuil (15)) Série statistique homogène.',
+                '0': '(coeff = seuil (15)) Série statistique entre les deux',
+            },
+            'asymetrie': {
+                'func': self.coeff_asym,
+                '>': '(coeff > 0) Série statistique étalée sur la droite.',
+                '<': '(coeff < 0) Série statistique étalée sur la gauche.',
+                '0': '(coeff = 0) Répartition symétrique.',
+            },
+            'applatissement': {
+                'func': self.coeff_appl,
+                '>': '(coeff > 0) Distribution leptokurtique (pointue).',
+                '<': '(coeff < 0) Distribution platykurtique (applatie).',
+                '0': '(coeff = 0) Distribution mesokurtique (normale).',
+            }
+        }
+
+    def _get_coeff_info(self, coeff, seuil=0):
+        value = self._coeffs_info()[coeff]
+        func = value['func']()
+        if func > seuil :
+            return value['>']
+        elif func < seuil:
+            return value['<']
+        else:
+            return value['0']
 
     def getData(self):
         data = self._serialize_data()
@@ -95,9 +141,6 @@ class _Serie:
             'y': self._count().values()
         }
         return data
-
-    def _count(self):
-        return Counter(self.serie)
 
     def mediane(self):
         m = self.effectifs // 2

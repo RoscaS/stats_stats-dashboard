@@ -21,6 +21,7 @@
               barThickness: 'flex',
               // maxBarThickness: 8,
               // minBarLength: 2,
+
               gridLines: {
                 // offsetGridLines: true,
               },
@@ -33,10 +34,19 @@
           labels: this.ds.plot.cum.ticks,
           datasets: [
             {
-              label: 'Frequence cumulée',
+              label: 'Frequences cumulée',
               backgroundColor: this.colors,
               borderWidth: 2,
               data: this.ds.plot.cum.freq,
+            },
+            {
+              label: 'Frequences cumulés',
+              backgroundColor: 'rgba(217, 3, 104, 1)',
+              borderColor: 'rgba(217, 3, 104, 1)',
+              // borderWidth: 2,
+              data: this.ds.plot.cum.freq,
+              type: 'line',
+              fill: false,
             },
           ],
         }, options,

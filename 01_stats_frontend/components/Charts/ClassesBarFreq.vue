@@ -21,6 +21,9 @@
               barThickness: 'flex',
               gridLines: {
               },
+              ticks: {
+                  beginAtZero: false
+              },
             },
           ],
         },
@@ -35,16 +38,7 @@
               borderWidth: 2,
               data: this.ds.plot.freq.eff,
             },
-            {
-              label: 'Effectifs cumulés',
-              backgroundColor: 'rgba(217, 3, 104, 1)',
-              borderColor: 'rgba(217, 3, 104, 1)',
-              // borderWidth: 2,
-              data: this.ds.plot.cum.eff,
-              type: 'line',
-              fill: false,
 
-            },
           ],
         }, options,
       );

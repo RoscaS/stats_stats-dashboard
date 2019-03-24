@@ -7,6 +7,11 @@ function randint(max = 100) {
   return Math.floor(Math.random() * (max + 1));
 }
 
+function format(str) {
+  let clean = str.replace('_', ' ');
+  return clean[0].toUpperCase() + clean.slice(1);
+}
+
 function colorPicker(count, alpha = 0.8, random=false) {
   if (count > rgbColours.length-1 || random) {
     return coloursGenerator(count, alpha);
@@ -62,4 +67,4 @@ const rgbColours = [
 
 ];
 
-export { coloursGenerator, colorPicker };
+export { range, randint, format, colorPicker, coloursGenerator };

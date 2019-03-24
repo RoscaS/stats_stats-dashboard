@@ -4,24 +4,16 @@
   <div class="frame">
 
     <div class="top-row">
-      <div class="columns is-variable is-8">
+      <div class="columns">
 
         <div class="column is-3">
           <classes-pie :ds="dataSet" :colors="colors"/>
         </div>
 
-        <div class="column is-3">
-          <table class="table simple-data is-hoverable is-striped">
-            <tr v-for="(idx, i) in dataSet.global" :key="idx">
-              <td><b>{{ format(i) }}</b></td>
-              <td> {{ dataSet.global[i] }}</td>
-            </tr>
-          </table>
+        <div class="column is-9">
+          <data-tiles :data="dataSet.study"></data-tiles>
         </div>
 
-        <div class="column is-6">
-
-        </div>
       </div>
     </div>
 
@@ -40,38 +32,28 @@
 </template>
 
 <script>
-
   import axios from 'axios';
   import ClassesPie from '../components/Charts/ClassesPie';
   import ClassesBar from '../components/Charts/ClassesBarEff';
   import Header from '../components/Header';
   import ClassesBarLine from '../components/Charts/ClassesBarFreq';
-  import { colorPicker } from '../assets/helpers';
+  import { colorPicker, format } from '../assets/helpers';
+  import DataTiles from '../components/Data/DataTiles';
 
   export default {
-    components: {ClassesBarLine, Header, ClassesBar, ClassesPie},
+    components: {DataTiles, ClassesBarLine, Header, ClassesBar, ClassesPie},
     async asyncData() {
       // let {data} = await axios.get('http://localhost:8000/series/');
       let {data} = await axios.get('http://localhost:8000/classes/');
       return {dataSet: data[0].data};
     },
-    data: () => ({
-
-    }),
+    data: () => ({}),
     computed: {
       colors() {
         return colorPicker(this.dataSet.plot.freq.ticks.length);
-      }
-    },
-
-    methods: {
-      format(str) {
-        let clean = str.replace('_', ' ');
-        return clean[0].toUpperCase() + clean.slice(1);
       },
     },
     mounted() {
-      console.log(this.dataSet)
     },
   };
 </script>

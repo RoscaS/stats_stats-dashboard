@@ -13,7 +13,7 @@
       let labels = [];
 
       for (let i in this.ds.plot.freq.eff_pc) {
-        labels.push(`${this.ds.plot.freq.eff[i]} (${this.ds.plot.freq.eff_pc[i]}%)`)
+        labels.push(`${this.ds.plot.freq.ticks[i]} (${this.ds.plot.freq.eff_pc[i]}%)`)
       }
 
       let options = {
@@ -23,7 +23,7 @@
           bodyFontSize: 16
         },
         legend: {display: false},
-        // title: {display: true, text: "Fréquences"}
+        title: {display: true, text: "Fréquences"}
 
       };
 

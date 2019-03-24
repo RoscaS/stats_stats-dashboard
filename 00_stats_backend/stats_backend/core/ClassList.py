@@ -26,12 +26,14 @@ class _ClassList(_Serie):
 
     def getData(self):
         data = self._serialize_data()
-        data['global']['classe_modale'] = self.classe_modale()[0].range_repr
+        general = data['study']['general']
+        general['classe_modale'] = self.classe_modale()[0].range_repr
         data['plot'] = {
             "data": {i.range_repr: i.effectif for i in self.classes},  # Delete ?
             "classes": [i._serialize_data() for i in self.classes],
             "freq": {
-                "ticks": [i.range_repr for i in self.classes],
+                # "ticks": [i.range_repr for i in self.classes],
+                "ticks": [self.start]+[i.end for i in self.classes],
                 "eff": [i.effectif for i in self.classes],
                 "eff_pc": [_r(i.frequence_pc) for i in self.classes],
             },
