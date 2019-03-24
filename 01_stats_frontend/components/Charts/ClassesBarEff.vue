@@ -1,0 +1,47 @@
+<script>
+  import { Bar } from 'vue-chartjs';
+
+  export default {
+    extends: Bar,
+    props: {
+      ds: {type: Object},
+      colors: {type: Array},
+    },
+    data: () => ({}),
+
+    mounted() {
+      let options = {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          xAxes: [
+            {
+              // barPercentage: 1.2,
+              categoryPercentage: 1,
+              barThickness: 'flex',
+              // maxBarThickness: 8,
+              // minBarLength: 2,
+              gridLines: {
+                // offsetGridLines: true,
+              },
+            },
+          ],
+        },
+      };
+
+      this.renderChart({
+          labels: this.ds.plot.cum.ticks,
+          datasets: [
+            {
+              label: 'Frequence cumulée',
+              backgroundColor: this.colors,
+              borderWidth: 2,
+              data: this.ds.plot.cum.freq,
+            },
+          ],
+        }, options,
+      );
+
+    },
+  };
+</script>

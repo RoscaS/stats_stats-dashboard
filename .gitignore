@@ -1,0 +1,11 @@
+# BACKEND
+00_stats_backend/.idea
+
+
+# FRONTEND
+01_stats_frontend/node_modules
+01_stats_frontend/npm-debug.log
+01_stats_frontend/.nuxt
+01_stats_frontend/dist
+01_stats_frontend/.idea
+
