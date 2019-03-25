@@ -1,6 +1,5 @@
 <template>
 
-
   <div class="frame">
 
     <div class="top-row">
@@ -20,10 +19,10 @@
     <div class="bottom-row">
       <div class="columns is-variable is-4">
         <div class="column is-6">
-          <classes-bar-line :ds="dataSet" :colors="colors"/>
+          <classes-bar-eff :ds="dataSet" :colors="colors"/>
         </div>
         <div class="column is-6">
-          <classes-bar :ds="dataSet" :colors="colors"/>
+          <classes-bar-freq :ds="dataSet" :colors="colors"/>
         </div>
       </div>
     </div>
@@ -32,22 +31,27 @@
 </template>
 
 <script>
+
+
   import axios from 'axios';
-  import ClassesPie from '../components/Charts/ClassesPie';
-  import ClassesBar from '../components/Charts/ClassesBarEff';
   import Header from '../components/Header';
-  import ClassesBarLine from '../components/Charts/ClassesBarFreq';
-  import { colorPicker, format } from '../assets/helpers';
+  import ClassesPie from '../components/Charts/ClassesPie';
+  import ClassesBarFreq from '../components/Charts/ClassesBarFreq';
+  import ClassesBarEff from '../components/Charts/ClassesBarEff';
   import DataTiles from '../components/Data/DataTiles';
+  import { colorPicker } from '../assets/helpers';
 
   export default {
-    components: {DataTiles, ClassesBarLine, Header, ClassesBar, ClassesPie},
+    components: {Header, DataTiles, ClassesBarEff, ClassesBarFreq, ClassesPie},
     async asyncData() {
       // let {data} = await axios.get('http://localhost:8000/series/');
       let {data} = await axios.get('http://localhost:8000/classes/');
-      return {dataSet: data[0].data};
+      return {
+        dataSet: data[0].data
+      };
     },
     data: () => ({}),
+
     computed: {
       colors() {
         return colorPicker(this.dataSet.plot.freq.ticks.length);
@@ -60,13 +64,11 @@
 
 <style lang="scss">
   .top-row {
-    padding: 60px 20px;
+    padding: 50px 20px 0 20px;
   }
 
   .bottom-row {
     padding: 20px;
-    position: fixed;
-    bottom: 0;
     width: 100%;
   }
 

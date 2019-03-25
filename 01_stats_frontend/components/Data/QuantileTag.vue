@@ -9,11 +9,16 @@
   export default {
     props: {
       Q: {type: String},
-      value: {type: String},
+      value: {type: Number},
     },
   };
 </script>
 
 <style lang="scss" scoped>
+
+  .tags {
+    margin-left: 4px;
+    /*margin-top: 10px;*/
+  }
 
 </style>

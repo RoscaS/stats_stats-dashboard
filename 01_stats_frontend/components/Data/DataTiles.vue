@@ -3,10 +3,10 @@
 
     <div class="tile is-parent is-vertical">
       <article class="tile is-child">
-        <data-cell title="General" :data="data.general"/>
+        <data-tile title="General" :data="data.general"/>
       </article>
       <article class="tile is-child">
-        <data-cell title="Forme" :data="data.forme"/>
+        <data-tile title="Forme" :data="data.forme"/>
       </article>
     </div>
 
@@ -15,16 +15,16 @@
 
         <div class="tile is-parent is-vertical">
           <article class="tile is-child">
-            <data-cell title="Centre" :data="data.centre"/>
+            <data-tile title="Centre" :data="data.centre"/>
           </article>
           <article class="tile is-child">
-            <data-cell title="Dispersion" :data="data.dispersion"/>
+            <data-tile title="Dispersion" :data="data.dispersion"/>
           </article>
         </div>
 
         <div class="tile is-parent is-vertical">
           <article class="tile is-child">
-            <data-cell title="Quantiles" :data="data.quantiles"/>
+            <data-tile title="Quantiles" :data="data.quantiles"/>
           </article>
         </div>
 
@@ -35,10 +35,10 @@
 </template>
 
 <script>
-  import DataCell from './Tile';
+  import DataTile from './Tile';
 
   export default {
-    components: {DataCell},
+    components: {DataTile},
     props: {
       data: {type: Object},
     },

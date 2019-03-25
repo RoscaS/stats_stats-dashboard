@@ -4,7 +4,7 @@ import pandas as pd
 from stats_backend.settings import EXCEL_DIR
 
 # CONSTANTES
-ROUND = 2
+ROUND = 3
 
 # HELPERS FUNCTIONS
 _r = lambda value: round(value, ROUND)

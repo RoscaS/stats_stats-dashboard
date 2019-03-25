@@ -10,7 +10,7 @@
     <div class="card-content">
       <div class="content">
         <table v-if="title !== 'Quantiles'" class="table">
-          <tr v-for="(idx, i) in data" :key="idx">
+          <tr v-for="(idx, i) in data" :key="i">
             <td class="data-label">{{ format(i) }}:</td>
             <td v-if="coefficients.includes(i)" :title="data[i].info"> {{ data[i].data }}</td>
             <td v-else> {{ data[i] }}</td>
@@ -18,7 +18,7 @@
         </table>
 
         <div v-else>
-          <Quantile v-for="(idx, i) in data" :key="idx" :data="data[i]" :title="i"/>
+          <Quantile v-for="(idx, i) in data" :key="i" :data="data[i]" :title="i"/>
         </div>
 
       </div>

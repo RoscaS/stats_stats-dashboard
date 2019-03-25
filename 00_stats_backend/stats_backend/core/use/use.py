@@ -1,24 +1,35 @@
-import pandas as pd
-
 from core.ClassList import _ClassList as ClassList
 from core.Serie import _Serie as Serie
-from core.settings import excel_file
+from core.settings import serie_from_excel
 
-s1 = [(2, 44), (3, 46), (7, 48), (11, 50), (8, 52), (6, 54), (3, 56)]
-s2 = [0, 1, (2, 2), (5, 3), (7, 4), (8, 5), (2, 6)]
+# s = serie_from_excel('coliformes')
+# x = Serie(s)
+# X = ClassList(serie=s, interval=100, start=7)
 
 
-df = pd.read_excel(excel_file('coliformes'))
-data = list(df['DATA'])
+s = [
+    (15, 5.08),
+    (11, 4.94),
+    (14, 4.99),
+    (5, 4.92),
+    (20, 4.86),
+    (10, 5.04),
+    (22, 5.06),
+    (13, 5.09),
+    (5, 4.88),
+    (6, 4.93),
+    (26, 4.91),
+    (8, 4.96),
+    (17, 5.01),
+    (15, 5.05),
+    (10, 5.12),
+    (12, 5.02),
+    (16, 5.0),
+    (25, 5.11)
+]
 
-x = Serie(data)
-X = ClassList(data, 7, 100)
+x = Serie(s)
+X = ClassList(serie=s, interval=1, start=1)
 
-y = Serie(s1)
-Y = ClassList(s1, 43, 2)
-
-z = Serie(s2)
-Z = ClassList(s2, 0, 2)
-
-print(X)
-
+# print(x)
+print(x.quartiles())

@@ -7,48 +7,37 @@
     props: {
       ds: {type: Object},
       colors: {type: Array},
+      type: {type: String, default: 'category'},
+
     },
     data: () => ({}),
 
     computed: {
       options() {
         return {
-          // colors: this.colors,
-          grid: {
-            position: 'front',
-            borderColor: '#5f5f5f',
-          },
           markers: {
-            size: [1, 1],
+            size: [6, 8],
           },
           chart: {
             id: 'Frequence',
             toolbar: {show: false},
           },
           xaxis: {
-            type: 'category',
+            type: this.type,
             categories: this.ds.plot.freq.ticks,
+            tickAmount: 'dataPoints',
+
           },
           yaxis: [
             {
               title: {
-                text: 'Frequences cumulées',
+                text: 'Effectifs',
               },
               tickAmount: 10,
-            },
-            {
-              opposite: true,
-              title: {
-                text: 'Éffectifs cumulés',
-              },
-            },
+            }
           ],
 
           plotOptions: {
-            bar: {
-              // distributed: true,
-              columnWidth: '100%',
-            },
             line: {
               // color: th
             },
@@ -58,7 +47,6 @@
       },
       series() {
         return [
-          {name: 'Frequence', type: 'bar', data: this.ds.plot.cum.freq},
           {name: 'Effectifs', type: 'line', data: this.ds.plot.cum.eff},
         ];
       },

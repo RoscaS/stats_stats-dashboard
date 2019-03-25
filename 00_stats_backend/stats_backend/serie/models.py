@@ -1,12 +1,5 @@
-from core.Serie import _Serie
-from core.settings import serie_from_excel
-
+from core.use.use import x
 from django.db import models
-
-
-serie = serie_from_excel('coliformes')
-serie_object = _Serie(serie)
-
 
 
 class Serie(models.Model):
@@ -14,4 +7,4 @@ class Serie(models.Model):
 
     @property
     def data(self):
-        return serie_object.getData()
+        return x.getData()

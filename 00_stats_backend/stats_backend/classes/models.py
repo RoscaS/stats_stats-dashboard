@@ -1,12 +1,5 @@
-from core.ClassList import _ClassList
-from core.settings import serie_from_excel
-
+from core.use.use import X
 from django.db import models
-
-
-serie = serie_from_excel('coliformes')
-serie_object = _ClassList(serie, 7, 100)
-
 
 
 class Classes(models.Model):
@@ -14,4 +7,4 @@ class Classes(models.Model):
 
     @property
     def data(self):
-        return serie_object.getData()
+        return X.getData()

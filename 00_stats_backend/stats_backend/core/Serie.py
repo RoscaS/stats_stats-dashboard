@@ -1,4 +1,5 @@
 import math
+import pandas as pd
 from collections import Counter
 from core.settings import _r
 
@@ -18,6 +19,8 @@ class _Serie:
         self.etendue = max(self.serie) - min(self.serie)
         self.centre = self.etendue / 2
         self.moyenne = sum(self.serie) / self.effectifs
+
+        self.ordre = None
 
     def __len__(self):
         return len(self.serie)
@@ -46,7 +49,7 @@ class _Serie:
             f"étirement à {'g' if self.coeff_asym() > 0 else 'd'} (0 = sym)" \
             f"\nCoef appl:\t\t\t{_r(self.coeff_appl())}\t" \
             f"{'pointe' if self.coeff_appl() > 0 else 'applatie'} (0 = norm)" \
-            f""
+            # f"\n\n{self.serie}"
         return s
 
     def _flatten_input(self, s):
@@ -54,7 +57,7 @@ class _Serie:
         flat_lst = []
         tuples_lst = [(1, i) if type(i) != tuple else (i[0], i[1]) for i in s]
         for i in tuples_lst:
-            flat_lst += [int(i[1]) for j in range(i[0])]
+            flat_lst += [float(i[1]) for j in range(i[0])]
         return flat_lst
 
     def _count(self):
@@ -98,6 +101,8 @@ class _Serie:
                 },
                 'quantiles': {
                     'quartiles': self.quartiles(),
+                    'deciles': self.deciles(),
+                    # 'centiles': self.centiles(),
                 },
             }
         }
@@ -124,10 +129,23 @@ class _Serie:
             }
         }
 
+    def _nature_caractere(self):
+        return {
+            'quantitatif': {
+                'continu': lambda: self.serie in 'R',
+                'discret': lambda: self.serie in ['a', 'b', 'c']
+
+            },
+            'qualitatif': {
+                'ordinal': lambda: self.ordre == 'intrinseque',
+                'nominal': lambda: self.ordre != 'intrinseque',
+            },
+        }
+
     def _get_coeff_info(self, coeff, seuil=0):
         value = self._coeffs_info()[coeff]
         func = value['func']()
-        if func > seuil :
+        if func > seuil:
             return value['>']
         elif func < seuil:
             return value['<']
@@ -139,6 +157,21 @@ class _Serie:
         data['plot'] = {
             'x': self._count().keys(),
             'y': self._count().values()
+        }
+        print(self._count().keys())
+        data['plot'] = {
+            "freq": {
+                "ticks": self._count().keys(),
+                # "ticks": [self.start]+[i.end for i in self.classes],
+                # "ticks": [[i.start, i.end] for i in self.classes],
+                "eff": self._count().values(),
+                "eff_pc": self._count().values(),
+            },
+            "cum": {
+                'ticks': self._count().keys(),
+                "freq": self._count().values(),
+                "eff": self._count().values()
+            }
         }
         return data
 
@@ -152,11 +185,20 @@ class _Serie:
         m = c.most_common(1)[0][0]
         return m
 
+    def _quantiles(self, type):
+        data = pd.DataFrame(self.serie)
+        position = [_r((1 / type) * i) for i in range(1, type)]
+        quartiles = [_r(data.quantile(i)[0]) for i in position]
+        return {c + 1: i for c, i in enumerate(quartiles)}
+
     def quartiles(self):
-        c = (self.effectifs // 2)
-        a = _Serie(self.serie[:c])
-        b = _Serie(self.serie[(c if self.est_paire else c + 1):])
-        return {1: a.mediane(), 2: self.mediane(), 3: b.mediane()}
+        return self._quantiles(4)
+
+    def deciles(self, Qn=0):
+        return self._quantiles(10)
+
+    def centiles(self, Qn=0):
+        return self._quantiles(100)
 
     def EIQ(self):
         """Écart inter-quartiles"""
@@ -206,4 +248,3 @@ class _Serie:
     def coeff_appl(self):
         """(gama_2)"""
         return self.coeff_fisher(4) - 3
-

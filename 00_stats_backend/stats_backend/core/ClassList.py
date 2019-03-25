@@ -32,15 +32,16 @@ class _ClassList(_Serie):
             "data": {i.range_repr: i.effectif for i in self.classes},  # Delete ?
             "classes": [i._serialize_data() for i in self.classes],
             "freq": {
-                # "ticks": [i.range_repr for i in self.classes],
-                "ticks": [self.start]+[i.end for i in self.classes],
-                "eff": [i.effectif for i in self.classes],
+                "ticks": [i.range_repr for i in self.classes],
+                # "ticks": [self.start]+[i.end for i in self.classes],
+                # "ticks": [[i.start, i.end] for i in self.classes],
+                "eff": [int(i.effectif) for i in self.classes],
                 "eff_pc": [_r(i.frequence_pc) for i in self.classes],
             },
             "cum": {
                 'ticks': [f"{i.start}{' ' * 5}{i.end}" for i in self.classes],
                 "freq": [_r(i.frequence_cum) for i in self.classes],
-                "eff": [i.effectif_cum for i in self.classes]
+                "eff": [int(i.effectif_cum) for i in self.classes]
             }
         }
         return data
@@ -48,7 +49,11 @@ class _ClassList(_Serie):
     def _build_classes(self):
         count = 0
         classes = []
-        for i in range((self.etendue // self.interval) + 1):
+
+        span = self.etendue * 100 if self.etendue < 1 and self.etendue > 0 else self.etendue
+        for i in range(int((span // self.interval)) + 1):
+
+        # for i in range((self.etendue // self.interval) + 1):
             start = i * self.interval + self.start
             end = start + self.interval
             eff = len([j for j in self.serie if j >= start and j < end])
