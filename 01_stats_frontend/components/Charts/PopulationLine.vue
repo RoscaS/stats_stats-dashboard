@@ -16,7 +16,7 @@
       options() {
         return {
           markers: {
-            size: [6, 8],
+            size: [4, 6],
           },
           chart: {
             id: 'Frequence',
@@ -34,7 +34,7 @@
                 text: 'Effectifs',
               },
               tickAmount: 10,
-            }
+            },
           ],
 
           plotOptions: {
@@ -47,7 +47,7 @@
       },
       series() {
         return [
-          {name: 'Effectifs', type: 'line', data: this.ds.plot.cum.eff},
+          {name: 'Valeur', type: 'line', data: this.ds.plot.cum.eff},
         ];
       },
     },

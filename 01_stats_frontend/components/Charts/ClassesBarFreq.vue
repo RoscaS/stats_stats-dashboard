@@ -19,7 +19,7 @@
             borderColor: '#5f5f5f',
           },
           markers: {
-            size: [1, 1],
+            size: [4, 6],
           },
           chart: {
             id: 'Frequence',
@@ -34,7 +34,7 @@
               title: {
                 text: 'Frequences cumulées',
               },
-              tickAmount: 10,
+              // tickAmount: 10,
             },
             {
               opposite: true,
@@ -58,8 +58,8 @@
       },
       series() {
         return [
-          {name: 'Frequence', type: 'bar', data: this.ds.plot.cum.freq},
-          {name: 'Effectifs', type: 'line', data: this.ds.plot.cum.eff},
+          {name: 'Frequence', type: 'bar', data: this.ds.plot.cum.eff},
+          {name: 'Effectifs', type: 'line', data: this.ds.plot.cum.freq},
         ];
       },
     },

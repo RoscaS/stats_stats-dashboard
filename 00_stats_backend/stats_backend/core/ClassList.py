@@ -12,6 +12,8 @@ class _ClassList(_Serie):
         self.interval = interval
         self.start = start
         self.classes = self._build_classes()
+        # self.moyenne = sum([i.centre for i in self.classes]) / len(self.classes)
+
 
     def __getitem__(self, item):
         return self.classes[item]
@@ -29,12 +31,10 @@ class _ClassList(_Serie):
         general = data['study']['general']
         general['classe_modale'] = self.classe_modale()[0].range_repr
         data['plot'] = {
-            "data": {i.range_repr: i.effectif for i in self.classes},  # Delete ?
+            "data": {i.range_repr: i.effectif for i in self.classes},# Delete ?
             "classes": [i._serialize_data() for i in self.classes],
             "freq": {
                 "ticks": [i.range_repr for i in self.classes],
-                # "ticks": [self.start]+[i.end for i in self.classes],
-                # "ticks": [[i.start, i.end] for i in self.classes],
                 "eff": [int(i.effectif) for i in self.classes],
                 "eff_pc": [_r(i.frequence_pc) for i in self.classes],
             },
@@ -129,13 +129,14 @@ class _ClassList(_Serie):
         return sum(x) / self.effectifs
 
     def histogram(self):
-        histo = "\n\t\t\t  c\t\tfreq\tfreq^"
+        histo = "\n\t\t\t  c\t\tfreq\tfreq^\tfreq^%"
         for i in self.classes:
             interval = f"[{i.start}, {i.end}["
             baton = "".join("#" for i in range(i.effectif))
             centre = f"({_r(i.centre)})"
             freq = _r(i.frequence)
             freq_cum = _r(i.frequence_cum)
+            freq_cum_pc = _r(i.frequence_cum * 100)
             histo += f"\n{interval}\t{centre}\t{freq} " \
-                f"\t{freq_cum} \t{baton} {len(baton)}"
+                f"\t{freq_cum} \t{freq_cum_pc} \t{baton} {len(baton)}"
         return histo

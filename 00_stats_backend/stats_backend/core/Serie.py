@@ -60,9 +60,6 @@ class _Serie:
             flat_lst += [float(i[1]) for j in range(i[0])]
         return flat_lst
 
-    def _count(self):
-        return Counter(self.serie)
-
     def _serialize_data(self):
         """Serialisation des données"""
         return {
@@ -152,18 +149,19 @@ class _Serie:
         else:
             return value['0']
 
+    def _count(self):
+        return {i[0]: i[1] for i in sorted(Counter(self.serie).items())}
+
     def getData(self):
         data = self._serialize_data()
         data['plot'] = {
             'x': self._count().keys(),
             'y': self._count().values()
         }
-        print(self._count().keys())
+
         data['plot'] = {
             "freq": {
                 "ticks": self._count().keys(),
-                # "ticks": [self.start]+[i.end for i in self.classes],
-                # "ticks": [[i.start, i.end] for i in self.classes],
                 "eff": self._count().values(),
                 "eff_pc": self._count().values(),
             },
@@ -185,20 +183,20 @@ class _Serie:
         m = c.most_common(1)[0][0]
         return m
 
-    def _quantiles(self, type):
-        data = pd.DataFrame(self.serie)
+    def _quantiles(self, type, population):
+        data = pd.DataFrame(population)
         position = [_r((1 / type) * i) for i in range(1, type)]
         quartiles = [_r(data.quantile(i)[0]) for i in position]
         return {c + 1: i for c, i in enumerate(quartiles)}
 
     def quartiles(self):
-        return self._quantiles(4)
+        return self._quantiles(4, self.serie)
 
     def deciles(self, Qn=0):
-        return self._quantiles(10)
+        return self._quantiles(10, self.serie)
 
     def centiles(self, Qn=0):
-        return self._quantiles(100)
+        return self._quantiles(100, self.serie)
 
     def EIQ(self):
         """Écart inter-quartiles"""

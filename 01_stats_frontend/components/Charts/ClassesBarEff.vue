@@ -26,6 +26,7 @@
           xaxis: {
             type: 'category',
             categories: this.ds.plot.freq.ticks,
+
           },
           plotOptions: {
             bar: {
@@ -33,16 +34,6 @@
               columnWidth: '100%',
             },
           },
-          responsive: [
-            {
-              breakpoint: 480,
-              options: {
-                chart: {
-                  width: 200,
-                },
-              },
-            },
-          ],
         };
       },
       series() {

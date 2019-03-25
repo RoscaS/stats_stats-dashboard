@@ -31,8 +31,8 @@ class _Class:
 
     def getPrev(self):
         return self.classList[self.idx - 1] \
-            if self.idx > 0 else None
+            if self.idx > 0 else self
 
     def getNext(self):
         return self.classList[self.idx + 1] \
-            if self.idx < len(self.classList) - 1 else None
+            if self.idx < len(self.classList) - 1 else self
