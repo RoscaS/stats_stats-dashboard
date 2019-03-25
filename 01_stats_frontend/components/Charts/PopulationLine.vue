@@ -33,15 +33,10 @@
               title: {
                 text: 'Effectifs',
               },
-              tickAmount: 10,
+              // tickAmount: 'dataPoints',
             },
           ],
-
-          plotOptions: {
-            line: {
-              // color: th
-            },
-          },
+          plotOptions: {},
         };
 
       },

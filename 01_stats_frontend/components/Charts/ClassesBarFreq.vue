@@ -13,7 +13,9 @@
     computed: {
       options() {
         return {
-          // colors: this.colors,
+          theme: {
+            palette: 'palette3',
+          },
           grid: {
             position: 'front',
             borderColor: '#5f5f5f',
@@ -22,7 +24,7 @@
             size: [4, 6],
           },
           chart: {
-            id: 'Frequence',
+            id: 'Frequences cumulées',
             toolbar: {show: false},
           },
           xaxis: {
@@ -34,12 +36,11 @@
               title: {
                 text: 'Frequences cumulées',
               },
-              // tickAmount: 10,
             },
             {
               opposite: true,
               title: {
-                text: 'Éffectifs cumulés',
+                text: 'Éffectifs cumulése',
               },
             },
           ],
@@ -58,8 +59,8 @@
       },
       series() {
         return [
-          {name: 'Frequence', type: 'bar', data: this.ds.plot.cum.eff},
-          {name: 'Effectifs', type: 'line', data: this.ds.plot.cum.freq},
+          {name: 'Frequences cumulées', type: 'line', data: this.ds.plot.cum.freq},
+          {name: 'Effectifs cumulés', type: 'bar', data: this.ds.plot.cum.eff},
         ];
       },
     },

@@ -101,6 +101,8 @@ class _ClassList(_Serie):
     def mode(self):
         classe = self.classe_modale()[0]
         a = classe.start
+
+
         b = classe.effectif - classe.getPrev().effectif
         d = classe.effectif - classe.getNext().effectif
         c = self.interval

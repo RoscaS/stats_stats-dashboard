@@ -1,7 +1,7 @@
 import math
 import pandas as pd
 from collections import Counter
-from core.settings import _r
+from core.settings import _r, COEF_VAR
 
 
 class _Serie:
@@ -44,11 +44,14 @@ class _Serie:
             f"\nVariance:\t\t\t{_r(self.variance())} " \
             f"\nÉcart-type:\t\t\t{_r(self.ecart_type())}" \
             f"\nCoef variation:\t\t{_r(self.coefficient_variation())}% " \
-            f"pop {'disp' if self.coefficient_variation() >= 15 else 'homog'}" \
-            f"\nCoef asymétrie:\t\t{_r(self.coeff_asym())}\t" \
-            f"étirement à {'g' if self.coeff_asym() > 0 else 'd'} (0 = sym)" \
-            f"\nCoef appl:\t\t\t{_r(self.coeff_appl())}\t" \
-            f"{'pointe' if self.coeff_appl() > 0 else 'applatie'} (0 = norm)" \
+            f"\t{self._get_coeff_info('variation', seuil=COEF_VAR)}" \
+            f"\nCoef asymétrie:\t\t{_r(self.coeff_asym())}" \
+            f"\t{self._get_coeff_info('asymetrie')}" \
+            f"\nCoef appl:\t\t\t{_r(self.coeff_appl())}" \
+            f"\t{self._get_coeff_info('applatissement')}" \
+            # f"\nCentiles:\t\t\t{list(self.centiles().values())} " \
+            # f"\n---------------" \
+            # f"\nDeciles:\t\t\t{list(self.deciles().values())} " \
             # f"\n\n{self.serie}"
         return s
 
@@ -83,7 +86,7 @@ class _Serie:
                     'ecart_type': _r(self.ecart_type()),
                     'coefficient_de_variation': {
                         'data': _r(self.coefficient_variation()),
-                        'info': self._get_coeff_info('variation', seuil=15)
+                        'info': self._get_coeff_info('variation', COEF_VAR)
                     }
                 },
                 'forme': {
@@ -108,14 +111,14 @@ class _Serie:
         return {
             'variation': {
                 'func': self.coefficient_variation,
-                '>': '(coeff > seuil (15)) Série statistique dispersée.',
-                '<': '(coeff < seuil (15)) Série statistique homogène.',
-                '0': '(coeff = seuil (15)) Série statistique entre les deux',
+                '>': f'(coeff > seuil ({COEF_VAR})) Série dispersée.',
+                '<': f'(coeff < seuil ({COEF_VAR})) Série homogène.',
+                '0': f'(coeff = seuil ({COEF_VAR})) Série entre les deux',
             },
             'asymetrie': {
                 'func': self.coeff_asym,
-                '>': '(coeff > 0) Série statistique étalée sur la droite.',
-                '<': '(coeff < 0) Série statistique étalée sur la gauche.',
+                '>': '(coeff > 0) Série étalée sur la droite.',
+                '<': '(coeff < 0) Série étalée sur la gauche.',
                 '0': '(coeff = 0) Répartition symétrique.',
             },
             'applatissement': {
@@ -127,15 +130,16 @@ class _Serie:
         }
 
     def _nature_caractere(self):
+        parse = {}
         return {
-            'quantitatif': {
-                'continu': lambda: self.serie in 'R',
-                'discret': lambda: self.serie in ['a', 'b', 'c']
+            parse['quantitatif']: {
+                parse['continu']: lambda: self.serie in 'R',
+                parse['discret']: lambda: self.serie in ['a', 'b', 'c']
 
             },
-            'qualitatif': {
-                'ordinal': lambda: self.ordre == 'intrinseque',
-                'nominal': lambda: self.ordre != 'intrinseque',
+            parse['qualitatif']: {
+                parse['ordinal']: lambda: self.ordre == 'intrinseque',
+                parse['nominal']: lambda: self.ordre != 'intrinseque',
             },
         }
 
@@ -154,11 +158,6 @@ class _Serie:
 
     def getData(self):
         data = self._serialize_data()
-        data['plot'] = {
-            'x': self._count().keys(),
-            'y': self._count().values()
-        }
-
         data['plot'] = {
             "freq": {
                 "ticks": self._count().keys(),
