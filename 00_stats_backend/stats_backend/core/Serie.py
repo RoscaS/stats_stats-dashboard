@@ -151,7 +151,16 @@ class _Serie:
     def _count(self):
         return {i[0]: i[1] for i in sorted(Counter(self.serie).items())}
 
+    def _cum_eff(self):
+        lst = []
+        prev = 0
+        for k,v in self._count().items():
+            prev += v
+            lst.append(prev)
+        return lst
+
     def getData(self):
+        self._cum_eff()
         data = self._serialize_data()
         data['plot'] = {
             "freq": {
@@ -162,7 +171,7 @@ class _Serie:
             "cum": {
                 'ticks': self._count().keys(),
                 "freq": self._count().values(),
-                "eff": self._count().values()
+                "eff": self._cum_eff()
             }
         }
         return data

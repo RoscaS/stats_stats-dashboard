@@ -18,9 +18,13 @@
 
     <div class="bottom-row">
       <div class="columns is-variable is-4">
+<!--        <div class="column is-6">-->
+          <!--<classes-bar-freq :ds="dataSet" :colors="colors" type="numeric"/>-->
+<!--          <population-line :ds="dataSet" :colors="colors" type="numeric"/>-->
+<!--        </div>-->
         <div class="column is-12">
           <!--<classes-bar-freq :ds="dataSet" :colors="colors" type="numeric"/>-->
-          <population-line :ds="dataSet" :colors="colors" type="numeric"/>
+          <population-cum-line :ds="dataSet" :colors="colors"/>
         </div>
       </div>
     </div>
@@ -39,9 +43,12 @@
   import DataTiles from '../../components/Data/DataTiles';
   import { colorPicker } from '../../assets/helpers';
   import PopulationLine from '../../components/Charts/PopulationLine';
+  import PopulationCumLine from '../../components/Charts/PopulationCumLine';
 
   export default {
-    components: {PopulationLine, Header, DataTiles, ClassesBarEff, ClassesBarFreq, ClassesPie},
+    components: {
+      PopulationCumLine,
+      PopulationLine, Header, DataTiles, ClassesBarEff, ClassesBarFreq, ClassesPie},
     async asyncData() {
       let {data} = await axios.get('http://localhost:8000/series/');
       // let {data} = await axios.get('http://localhost:8000/classes/');
