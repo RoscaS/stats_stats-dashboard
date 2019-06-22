@@ -103,7 +103,7 @@ class _ClassList(_Serie):
         b = classe.effectif - classe.getPrev().effectif
         d = classe.effectif - classe.getNext().effectif
         c = self.interval
-        return a + (b * c) / (b + d)
+        return _r(a + (b * c) / (b + d))
 
     def quartiles(self):
         q1 = self._quantile(0.25)

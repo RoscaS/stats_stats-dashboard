@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1333d440-5ba7-42af-9e15-278dd49e888e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/core/Serie.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/Serie.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../01_stats_frontend/components/Data/EventCard.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../01_stats_frontend/components/Data/EventsSpanCard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/ClassList.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/ClassList.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../01_stats_frontend/components/Charts/PopulationCumLine.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../01_stats_frontend/components/Charts/PopulationCumLine.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../01_stats_frontend/components/Data/Tile.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../01_stats_frontend/components/Data/Tile.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../01_stats_frontend/pages/Population/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../01_stats_frontend/pages/Population/index.vue" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,11 +22,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.5311097">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/core/ClassList.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="532">
-                  <caret line="64" column="14" lean-forward="true" selection-start-line="64" selection-start-column="14" selection-end-line="64" selection-end-column="14" />
+                <state relative-caret-position="1540">
+                  <caret line="105" column="40" selection-start-line="105" selection-start-column="40" selection-end-line="105" selection-end-column="40" />
                   <folding>
                     <element signature="e#0#11#0" expanded="true" />
                     <element signature="e#911#1554#0" />
@@ -33,14 +36,14 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/core/Serie.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1509">
-                  <caret line="173" column="38" selection-start-line="173" selection-start-column="38" selection-end-line="173" selection-end-column="38" />
+                <state relative-caret-position="-290">
+                  <caret line="69" column="44" lean-forward="true" selection-start-line="69" selection-start-column="44" selection-end-line="69" selection-end-column="44" />
                   <folding>
                     <element signature="e#0#11#0" expanded="true" />
-                    <element signature="e#2342#3938#0" />
+                    <element signature="e#715#1942#0" expanded="true" />
                     <element signature="e#2879#3045#0" />
                     <element signature="e#4198#5099#0" />
                   </folding>
@@ -123,8 +126,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/core/use/use.py" />
-        <option value="$PROJECT_DIR$/core/ClassList.py" />
         <option value="$PROJECT_DIR$/core/Serie.py" />
+        <option value="$PROJECT_DIR$/core/ClassList.py" />
       </list>
     </option>
   </component>
@@ -177,6 +180,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -232,15 +236,15 @@
       <updated>1561204073133</updated>
       <workItem from="1561204074286" duration="135000" />
       <workItem from="1561205915760" duration="2771000" />
-      <workItem from="1561217048165" duration="7482000" />
+      <workItem from="1561217048165" duration="8893000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10388000" />
+    <option name="totallyTimeSpent" value="11799000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1599" y="-24" width="2241" height="2184" extended-state="6" />
+    <frame x="2197" y="-24" width="1643" height="2184" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
@@ -256,7 +260,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32970157" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="SciView" order="0" />
       <window_info anchor="right" id="Database" order="1" />
@@ -319,24 +323,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/ClassList.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="64" column="14" lean-forward="true" selection-start-line="64" selection-start-column="14" selection-end-line="64" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-            <element signature="e#911#1554#0" />
-            <element signature="e#1811#2284#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="10" selection-start-line="10" selection-end-line="10" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/Serie.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-290">
+          <caret line="69" column="44" lean-forward="true" selection-start-line="69" selection-start-column="44" selection-end-line="69" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#715#1942#0" expanded="true" />
+            <element signature="e#2879#3045#0" />
+            <element signature="e#4198#5099#0" />
           </folding>
         </state>
       </provider>
@@ -348,15 +353,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/Serie.py">
+    <entry file="file://$PROJECT_DIR$/core/ClassList.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1509">
-          <caret line="173" column="38" selection-start-line="173" selection-start-column="38" selection-end-line="173" selection-end-column="38" />
+        <state relative-caret-position="1540">
+          <caret line="105" column="40" selection-start-line="105" selection-start-column="40" selection-end-line="105" selection-end-column="40" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
-            <element signature="e#2342#3938#0" />
-            <element signature="e#2879#3045#0" />
-            <element signature="e#4198#5099#0" />
+            <element signature="e#911#1554#0" />
+            <element signature="e#1811#2284#0" />
           </folding>
         </state>
       </provider>

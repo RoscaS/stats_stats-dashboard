@@ -4,11 +4,6 @@
 
     <div class="top-row">
       <div class="columns">
-
-        <!--<div class="column is-3">-->
-          <!--<classes-pie :ds="dataSet" :colors="colors"/>-->
-        <!--</div>-->
-
         <div class="column is-9">
           <data-tiles :data="dataSet.study"></data-tiles>
         </div>
@@ -18,12 +13,7 @@
 
     <div class="bottom-row">
       <div class="columns is-variable is-4">
-<!--        <div class="column is-6">-->
-          <!--<classes-bar-freq :ds="dataSet" :colors="colors" type="numeric"/>-->
-<!--          <population-line :ds="dataSet" :colors="colors" type="numeric"/>-->
-<!--        </div>-->
         <div class="column is-12">
-          <!--<classes-bar-freq :ds="dataSet" :colors="colors" type="numeric"/>-->
           <population-cum-line :ds="dataSet" :colors="colors"/>
         </div>
       </div>
@@ -71,7 +61,7 @@
 
 <style lang="scss">
   .top-row {
-    padding: 100px 20px 50px 20px;
+    padding: 20px 20px 50px 20px;
   }
 
   .bottom-row {

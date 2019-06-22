@@ -65,7 +65,14 @@
 
     td {
       padding: 0 !important;
-      border: none !important;
+    }
+
+    tr {
+      &:last-child {
+        td {
+          border: none !important;
+        }
+      }
     }
 
     .data-label {
