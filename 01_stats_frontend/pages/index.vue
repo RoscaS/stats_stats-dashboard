@@ -44,7 +44,6 @@
   export default {
     components: {Header, DataTiles, ClassesBarEff, ClassesBarFreq, ClassesPie},
     async asyncData() {
-      // let {data} = await axios.get('http://localhost:8000/series/');
       let {data} = await axios.get('http://localhost:8000/classes/');
       return {
         dataSet: data[0].data

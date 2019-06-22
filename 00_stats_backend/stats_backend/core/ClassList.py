@@ -12,8 +12,8 @@ class _ClassList(_Serie):
         self.interval = interval
         self.start = start
         self.classes = self._build_classes()
-        # self.moyenne = sum([i.centre for i in self.classes]) / len(self.classes)
-
+        self.moyenne = sum([i.centre * i.effectif for i in self.classes]) / len(
+            self)
 
     def __getitem__(self, item):
         return self.classes[item]
@@ -31,7 +31,8 @@ class _ClassList(_Serie):
         general = data['study']['general']
         general['classe_modale'] = self.classe_modale()[0].range_repr
         data['plot'] = {
-            "data": {i.range_repr: i.effectif for i in self.classes},# Delete ?
+            "data": {i.range_repr: i.effectif for i in self.classes},
+            # Delete ?
             "classes": [i._serialize_data() for i in self.classes],
             "freq": {
                 "ticks": [i.range_repr for i in self.classes],
@@ -49,11 +50,9 @@ class _ClassList(_Serie):
     def _build_classes(self):
         count = 0
         classes = []
-
-        span = self.etendue * 100 if self.etendue < 1 and self.etendue > 0 else self.etendue
+        span = self.etendue * 100 if self.etendue < 1 and self.etendue > 0 \
+            else self.etendue
         for i in range(int((span // self.interval)) + 1):
-
-        # for i in range((self.etendue // self.interval) + 1):
             start = i * self.interval + self.start
             end = start + self.interval
             eff = len([j for j in self.serie if j >= start and j < end])
@@ -101,8 +100,6 @@ class _ClassList(_Serie):
     def mode(self):
         classe = self.classe_modale()[0]
         a = classe.start
-
-
         b = classe.effectif - classe.getPrev().effectif
         d = classe.effectif - classe.getNext().effectif
         c = self.interval
@@ -116,9 +113,8 @@ class _ClassList(_Serie):
 
     def variance(self):
         """(v) Moyenne des carrés des écarts à la moyenne"""
-        return sum(
-            [(i - self.moyenne) ** 2 for i in self.serie]
-        ) / (self.effectifs - 1)
+        x = [i.effectif * (i.centre - self.moyenne)**2 for i in self.classes]
+        return sum(x) / len(self)
 
     def ecart_type(self):
         """(sigma)"""

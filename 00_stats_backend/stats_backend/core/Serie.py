@@ -48,11 +48,7 @@ class _Serie:
             f"\nCoef asymétrie:\t\t{_r(self.coeff_asym())}" \
             f"\t{self._get_coeff_info('asymetrie')}" \
             f"\nCoef appl:\t\t\t{_r(self.coeff_appl())}" \
-            f"\t{self._get_coeff_info('applatissement')}" \
-            # f"\nCentiles:\t\t\t{list(self.centiles().values())} " \
-            # f"\n---------------" \
-            # f"\nDeciles:\t\t\t{list(self.deciles().values())} " \
-            # f"\n\n{self.serie}"
+            f"\t{self._get_coeff_info('applatissement')}"
         return s
 
     def _flatten_input(self, s):
@@ -64,7 +60,7 @@ class _Serie:
         return flat_lst
 
     def _serialize_data(self):
-        """Serialisation des données"""
+        """Serialization des données"""
         return {
             'study': {
                 'general': {
@@ -72,7 +68,7 @@ class _Serie:
                     'min': min(self.serie),
                     'max': max(self.serie),
                     'etendue': self.etendue,
-                    'mode': _r(self.mode()),
+                    'mode': self.mode(),
                 },
                 'centre': {
                     'centre': _r(self.centre),
@@ -102,7 +98,6 @@ class _Serie:
                 'quantiles': {
                     'quartiles': self.quartiles(),
                     'deciles': self.deciles(),
-                    # 'centiles': self.centiles(),
                 },
             }
         }
@@ -179,8 +174,9 @@ class _Serie:
 
     def mode(self):
         c = Counter(self.serie)
-        m = c.most_common(1)[0][0]
-        return m
+        m = c.most_common(1)[0]
+        lst = [k for k, v in c.items() if v == m[1]]
+        return f"{sorted(lst)} eff={m[1]}"
 
     def _quantiles(self, type, population):
         data = pd.DataFrame(population)
