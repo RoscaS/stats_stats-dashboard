@@ -1,15 +1,16 @@
 <template>
     <div class="card">
-      <div class="card-header is-info">
-        <p class="card-header-title is-centered">🡐 Interval 🡒</p>
-      </div>
+<!--      <div class="card-header is-info">-->
+<!--        <p class="card-header-title is-centered">🡐 Interval 🡒</p>-->
+<!--      </div>-->
       <div class="card-content">
         <div class="content">
           <p>
-            {{ element.value }}
+            de <b>x<sub>{{element.start.cum}}</sub></b> à <b>x<sub>{{element.end.cum}}</sub></b>
+            = <b>{{ element.interval.value }}</b>
           </p>
           <p>
-            <b>{{ element.percent }} %</b>
+            <b>{{ element.interval.percent }} %</b> des effectifs
           </p>
         </div>
       </div>
@@ -41,9 +42,11 @@
     .card-content {
       padding: 10px;
       p {
-        text-align: center;
         padding: 0 auto 0 auto;
         margin: 0 auto 0 auto;
+        :last-child {
+          text-align: center;
+        }
       }
     }
   }

@@ -23,6 +23,14 @@
           markers: {
             size: [4, 6],
           },
+          dataLabels: {
+            enabled: true,
+            style: {
+                fontSize: '16px',
+                fontFamily: 'Helvetica, Arial, sans-serif',
+                colors: undefined
+            },
+          },
           chart: {
             id: 'Frequences cumulées',
             toolbar: {show: false},

@@ -69,15 +69,16 @@ class _ClassList(_Serie):
         """Trouve la classe où se trouve `valeur` (si quartiles .24, .5, .75)"""
         for i in self.classes:
             if (i.frequence_cum >= valeur):
-                return i.getNext()
+                return i
 
     def _quantile(self, valeur):
         classe = self._classe_du_quantile(valeur)
         a = classe.start
         b = self.interval
-        c = valeur - classe.getPrev().frequence_cum
-        d = classe.frequence_cum - valeur
-        return a + ((b * c) / d)
+        c = _r(classe.getNext().getNext().frequence_cum - classe.getNext().frequence_cum)
+        d = _r(classe.frequence_cum - classe.getPrev().frequence_cum )
+        print(f"{a} + {b} * ({c} / {d})\t\t{valeur}")
+        return a + b * (c / d)
 
     def effectifs(self, cumule=False):
         return [i.effectif_cum if cumule else i.effectif for i in self.classes]

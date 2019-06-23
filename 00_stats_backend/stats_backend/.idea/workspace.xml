@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1333d440-5ba7-42af-9e15-278dd49e888e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../01_stats_frontend/components/Data/EventCard.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../01_stats_frontend/components/Data/EventsSpanCard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/ClassList.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/ClassList.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/use/use.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/use/use.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../01_stats_frontend/components/Charts/ClassesBarFreq.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../01_stats_frontend/components/Charts/ClassesBarFreq.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../01_stats_frontend/components/Charts/PopulationCumLine.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../01_stats_frontend/components/Charts/PopulationCumLine.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../01_stats_frontend/components/Data/EventCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../01_stats_frontend/components/Data/EventCard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../01_stats_frontend/components/Data/EventsSpanCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../01_stats_frontend/components/Data/EventsSpanCard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../01_stats_frontend/components/Data/PercentCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../01_stats_frontend/components/Data/PercentCard.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../01_stats_frontend/components/Data/Tile.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../01_stats_frontend/components/Data/Tile.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../01_stats_frontend/pages/Population/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../01_stats_frontend/pages/Population/index.vue" afterDir="false" />
     </list>
@@ -25,11 +29,11 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/core/ClassList.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1540">
-                  <caret line="105" column="40" selection-start-line="105" selection-start-column="40" selection-end-line="105" selection-end-column="40" />
+                <state relative-caret-position="858">
+                  <caret line="77" column="88" selection-start-line="77" selection-start-column="88" selection-end-line="77" selection-end-column="88" />
                   <folding>
                     <element signature="e#0#11#0" expanded="true" />
-                    <element signature="e#911#1554#0" />
+                    <element signature="e#502#695#0" expanded="true" />
                     <element signature="e#1811#2284#0" />
                   </folding>
                 </state>
@@ -39,8 +43,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/core/Serie.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-290">
-                  <caret line="69" column="44" lean-forward="true" selection-start-line="69" selection-start-column="44" selection-end-line="69" selection-end-column="44" />
+                <state relative-caret-position="1366">
+                  <caret line="211" column="29" lean-forward="true" selection-start-line="211" selection-start-column="29" selection-end-line="211" selection-end-column="29" />
                   <folding>
                     <element signature="e#0#11#0" expanded="true" />
                     <element signature="e#715#1942#0" expanded="true" />
@@ -97,8 +101,8 @@
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/core/use/use.py">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="400">
-                      <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+                    <state relative-caret-position="34">
+                      <caret line="6" selection-start-line="6" selection-end-line="14" selection-end-column="10" />
                       <folding>
                         <element signature="e#0#42#0" expanded="true" />
                       </folding>
@@ -117,6 +121,9 @@
       <find>moyenn</find>
       <find>moyenne</find>
       <find>cum</find>
+      <find>asymetrie</find>
+      <find>Ecart</find>
+      <find>ecart</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -125,8 +132,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/core/use/use.py" />
         <option value="$PROJECT_DIR$/core/Serie.py" />
+        <option value="$PROJECT_DIR$/core/use/use.py" />
         <option value="$PROJECT_DIR$/core/ClassList.py" />
       </list>
     </option>
@@ -236,15 +243,15 @@
       <updated>1561204073133</updated>
       <workItem from="1561204074286" duration="135000" />
       <workItem from="1561205915760" duration="2771000" />
-      <workItem from="1561217048165" duration="8893000" />
+      <workItem from="1561217048165" duration="17977000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11799000" />
+    <option name="totallyTimeSpent" value="20883000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="2197" y="-24" width="1643" height="2184" extended-state="6" />
+    <frame x="0" y="-24" width="3840" height="2184" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
@@ -303,26 +310,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/use/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="36" selection-start-line="2" selection-start-column="36" selection-end-line="2" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/use/use.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="e#0#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
@@ -333,15 +320,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/Serie.py">
+    <entry file="file://$PROJECT_DIR$/core/use/use.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-290">
-          <caret line="69" column="44" lean-forward="true" selection-start-line="69" selection-start-column="44" selection-end-line="69" selection-end-column="44" />
+        <state relative-caret-position="34">
+          <caret line="6" selection-start-line="6" selection-end-line="14" selection-end-column="10" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
-            <element signature="e#715#1942#0" expanded="true" />
-            <element signature="e#2879#3045#0" />
-            <element signature="e#4198#5099#0" />
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/use/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="36" selection-start-line="2" selection-start-column="36" selection-end-line="2" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -353,13 +347,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/ClassList.py">
+    <entry file="file://$PROJECT_DIR$/core/Serie.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1540">
-          <caret line="105" column="40" selection-start-line="105" selection-start-column="40" selection-end-line="105" selection-end-column="40" />
+        <state relative-caret-position="1366">
+          <caret line="211" column="29" lean-forward="true" selection-start-line="211" selection-start-column="29" selection-end-line="211" selection-end-column="29" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
-            <element signature="e#911#1554#0" />
+            <element signature="e#715#1942#0" expanded="true" />
+            <element signature="e#2879#3045#0" />
+            <element signature="e#4198#5099#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/ClassList.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="858">
+          <caret line="77" column="88" selection-start-line="77" selection-start-column="88" selection-end-line="77" selection-end-column="88" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#502#695#0" expanded="true" />
             <element signature="e#1811#2284#0" />
           </folding>
         </state>

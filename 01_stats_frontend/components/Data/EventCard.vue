@@ -1,8 +1,8 @@
 <template>
   <div class="card">
-    <div class="card-header" :style="headerColor()">
-      <p class="card-header-title is-centered">{{ title }}</p>
-    </div>
+<!--    <div class="card-header" :style="headerColor()">-->
+<!--      <p class="card-header-title is-centered">{{ title }}</p>-->
+<!--    </div>-->
     <div class="card-content">
       <div class="content">
         <table class="table is-narrow">
@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     headerColor() {
-      return `background-color: ${this.title === 'Selected' ? '#329086' : '#42B5A8'}`
+      // return `background-color: ${this.title === 'Selected' ? '#329086' : '#42B5A8'}`
     }
   }
 };
@@ -45,7 +45,7 @@ export default {
 
   .card-header {
     .card-header-title {
-      color: white;
+      /*color: white;*/
     }
   }
 

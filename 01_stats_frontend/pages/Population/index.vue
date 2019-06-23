@@ -2,19 +2,18 @@
 
   <div class="frame">
 
-    <div class="top-row">
+    <div class="top-row" @click="toggleRange()">
       <div class="columns">
         <div class="column is-9">
           <data-tiles :data="dataSet.study"></data-tiles>
         </div>
-
       </div>
     </div>
 
     <div class="bottom-row">
       <div class="columns is-variable is-4">
         <div class="column is-12">
-          <population-cum-line :ds="dataSet" :colors="colors"/>
+          <population-cum-line :ds="dataSet" :colors="colors" :show-range="showRange"/>
         </div>
       </div>
     </div>
@@ -46,22 +45,27 @@
         dataSet: data[0].data
       };
     },
-    data: () => ({}),
+    data: () => ({
+      showRange: false,
+      images: {mode: false, }
+    }),
 
     computed: {
       colors() {
         return colorPicker(this.dataSet.plot.freq.ticks.length);
-
       },
     },
-    mounted() {
+    methods: {
+      toggleRange() {
+        this.showRange = !this.showRange;
+      }
     },
   };
 </script>
 
 <style lang="scss">
   .top-row {
-    padding: 20px 20px 50px 20px;
+    padding: 50px 20px 50px 20px;
   }
 
   .bottom-row {
